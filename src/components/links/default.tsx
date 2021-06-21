@@ -5,12 +5,12 @@ import classNames from 'classnames';
 export type AppLinkProps = {
   href: string;
   className?: string;
+  active?: boolean
 };
 
-export const AppLink: FC<AppLinkProps> = ({ children, href, className = '' }) => {
-
+export const AppLink: FC<AppLinkProps> = ({ children, href, className = '', active = false }) => {
   const linkClass = classNames('text-blue-700', className, {
-    'link-pressed': true,
+    '!text-yellow-500': active,
     'link-hoge': false,
     'link-over': true,
   });
