@@ -1,6 +1,6 @@
 import type { FC } from 'react';
 import Head from 'next/head';
-import GlobalNav from '@/components/nav/global';
+import GlobalNav from '@/components/navs/global';
 
 export type LayoutDefaultProps = {
   title?: string;
