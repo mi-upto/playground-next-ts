@@ -1,5 +1,6 @@
 import type { FC } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import classNames from 'classnames';
 
 export type AppLinkProps = {
@@ -8,9 +9,13 @@ export type AppLinkProps = {
   active?: boolean
 };
 
-export const AppLink: FC<AppLinkProps> = ({ children, href, className = '', active = false }) => {
-  const linkClass = classNames('text-blue-700', className, {
-    '!text-yellow-500': active,
+export const AppLink: FC<AppLinkProps> = ({ children, href, className = ''}) => {
+  const router = useRouter();
+  const isActive = router.asPath === href;
+
+  const linkClass = classNames('px-3 text-black', className, {
+    '!text-white': isActive,
+    'bg-black': isActive,
     'link-hoge': false,
     'link-over': true,
   });
