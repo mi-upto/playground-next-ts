@@ -4,13 +4,6 @@ import Image from 'next/image'
 import type { NextPage } from 'next';
 import useSWR from 'swr';
 
-function Profile() {
-
-
-
-  return <div></div>;
-}
-
 export const About: NextPage = () => {
   const { data, error } = useSWR('https://dog.ceo/api/breeds/image/random', fetch);
   if (error) {
