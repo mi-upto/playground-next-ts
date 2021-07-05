@@ -1,5 +1,5 @@
 import { LayoutDefault } from '@/components/layouts/default';
-import getSortedPostsData, { Post } from '@/lib/post';
+import { getSortedPostsData, Post } from '@/lib/post';
 import type { NextPage } from 'next';
 // import type { NextPage, GetServerSideProps } from 'next';
 
