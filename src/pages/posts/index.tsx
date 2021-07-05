@@ -1,6 +1,7 @@
+import type { NextPage } from 'next';
 import { LayoutDefault } from '@/components/layouts/default';
 import { getSortedPostsData, Post } from '@/lib/post';
-import type { NextPage } from 'next';
+import AppLink from '@/components/links/default';
 // import type { NextPage, GetServerSideProps } from 'next';
 
 // ビルド時のサーバ側でのみ実行されクライアント側で実行されることは無い
@@ -37,14 +38,23 @@ type Props = {
 };
 const Posts: NextPage<Props> = ({ allPostsData }) => {
   return (
-    <LayoutDefault title="First Post">
+    <LayoutDefault title="Blog Title">
       <section>
-        <h1 className="text-3xl my-5">Blog Title</h1>
+        <h1 className="my-10 text-gray-900 text-5xl font-bold tracking-tight">
+          Blog Title
+        </h1>
         <ul>
           {allPostsData.map(({ id, date, title }: Post) => (
             <li key={id} className="flex flex-col mb-4">
               <time className="text-gray-500 text-sm">{date}</time>
-              <h2>{title}</h2>
+              <h2>
+                <AppLink
+                  href={`/posts/${id}`}
+                  className="!text-blue-800 underline"
+                >
+                  {title}
+                </AppLink>
+              </h2>
             </li>
           ))}
         </ul>

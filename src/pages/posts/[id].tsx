@@ -24,7 +24,7 @@ interface Params extends ParsedUrlQuery {
 
 export const getStaticProps: GetStaticProps<Props, Params> = async (context) => {
   const params = context.params!
-  const postData = getPostData(params.id);
+  const postData = await getPostData(params.id);
 
   if (!postData) {
     return {
@@ -41,10 +41,12 @@ export const getStaticProps: GetStaticProps<Props, Params> = async (context) => 
 
 export const PostDetail: NextPage<Props> = ({ postData }) => {
   return (
-    <LayoutDefault>
+    <LayoutDefault title={postData.title}>
       <h1>{postData.title}</h1>
       <span>{postData.id}</span>
       <time>{postData.date}</time>
+
+      <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
     </LayoutDefault>
   );
 };

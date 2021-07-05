@@ -18,7 +18,9 @@ export const About: NextPage = () => {
 
   return (
     <LayoutDefault>
-      <h1 className="text-5xl">This is About Page</h1>
+      <h1 className="my-10 text-gray-900 text-5xl font-bold tracking-tight">
+        This is About Page
+      </h1>
       <div className="my-4">
         Return <Link href="/">First page</Link>
       </div>

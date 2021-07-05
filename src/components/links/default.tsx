@@ -13,12 +13,16 @@ export const AppLink: FC<AppLinkProps> = ({ children, href, className = ''}) => 
   const router = useRouter();
   const isActive = router.asPath === href;
 
-  const linkClass = classNames('px-3 text-black', className, {
-    '!text-white': isActive,
-    'bg-black': isActive,
-    'link-hoge': false,
-    'link-over': true,
-  });
+  const linkClass = classNames(
+    'text-black hover:text-blue-800',
+    className,
+    {
+      '!text-white': isActive,
+      'bg-blue-800': isActive,
+      'link-hoge': false,
+      'link-over': true,
+    }
+  );
 
   return (
     <Link href={href}>

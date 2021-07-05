@@ -4,9 +4,9 @@ import type { NextPage } from 'next';
 export const Home: NextPage = () => {
   return (
     <LayoutDefault>
-      <h1 className="text-5xl tracking-tight font-extrabold text-gray-900">
+      <h1 className="text-5xl tracking-tight font-bold text-gray-900 my-10">
         <span className="block">Hello World!</span>
-        <span className="block text-indigo-600">Next.js TypeScript</span>
+        <span className="block text-blue-800 pl-10">Next.js TypeScript</span>
       </h1>
 
       <div className="my-4">
