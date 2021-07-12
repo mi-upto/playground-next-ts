@@ -2,19 +2,18 @@ import { LayoutDefault } from "@/components/layouts/default";
 import Link from 'next/link'
 import Image from 'next/image'
 import type { NextPage } from 'next';
-import useSWR from 'swr';
+import { useEffect, useState } from 'react';
+import { getRandomDogImages } from '@/lib/dog';
+
 
 export const About: NextPage = () => {
-  const { data, error } = useSWR('https://dog.ceo/api/breeds/image/random', fetch);
-  if (error) {
-    return <div>failed to load</div>
-  }
-  if (!data) {
-    return <div>loading...</div>
-  }
+  const [url, setUrl] = useState('');
 
-  console.log('data', data);
-
+  useEffect(() => {
+    getRandomDogImages().then((url) => {
+      setUrl(url);
+    });
+  }, []);
 
   return (
     <LayoutDefault>
@@ -24,7 +23,7 @@ export const About: NextPage = () => {
       <div className="my-4">
         Return <Link href="/">First page</Link>
       </div>
-      <Image src="/images/profile.jpg" alt="profile" height={144} width={144} />
+      {url && <Image src={url} alt="profile" height={144} width={144} />}
 
       <div className="grid gap-4 grid-flow-col grid-cols-3 grid-rows-2">
         <div>1</div>
