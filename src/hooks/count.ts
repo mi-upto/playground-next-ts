@@ -1,6 +1,8 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 
-export const useCounter = (props = 0) => {
+type UseCounterParameter = number | undefined;
+
+export const useCounter = (props: UseCounterParameter = 0) => {
   const [count, setCount] = useState(props);
 
   const increment = useCallback(() => {
@@ -15,5 +17,20 @@ export const useCounter = (props = 0) => {
     count,
     increment,
     decrement,
+  };
+};
+
+export const useCounterWithAlert = (props: UseCounterParameter) => {
+  const { count, ...dispatches } = useCounter(props);
+
+  useEffect(() => {
+    if (count === 10) {
+      alert('ten!!');
+    }
+  }, [count]);
+
+  return {
+    count,
+    ...dispatches,
   };
 };

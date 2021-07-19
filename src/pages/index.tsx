@@ -1,9 +1,20 @@
-import { LayoutDefault } from "@/components/layouts/default";
+import { LayoutDefault } from '@/components/layouts/default';
 import type { NextPage } from 'next';
-import { useCounter } from '@/hooks/count';
+import { useCounter, useCounterWithAlert } from '@/hooks/count';
 
 export const Home: NextPage = () => {
-  const {count, increment, decrement} = useCounter(0)
+  const { count, increment, decrement } = useCounter(0);
+  const {
+    count: count2,
+    increment: increment2,
+    decrement: decrement2
+  } = useCounter(10)
+  const {
+    count: count3,
+    increment: increment3,
+    decrement: decrement3,
+  } = useCounterWithAlert(10);
+
 
   return (
     <LayoutDefault>
@@ -16,6 +27,18 @@ export const Home: NextPage = () => {
       <div>
         <button onClick={increment}>+1</button>
         <button onClick={decrement}>-1</button>
+      </div>
+
+      <p>count2: {count2}</p>
+      <div>
+        <button onClick={increment2}>+1</button>
+        <button onClick={decrement2}>-1</button>
+      </div>
+
+      <p>count3: {count3}</p>
+      <div>
+        <button onClick={increment3}>+1</button>
+        <button onClick={decrement3}>-1</button>
       </div>
 
       <div className="my-4">
@@ -31,6 +54,6 @@ export const Home: NextPage = () => {
       </div>
     </LayoutDefault>
   );
-}
+};
 
 export default Home;
