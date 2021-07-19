@@ -1,13 +1,22 @@
 import { LayoutDefault } from "@/components/layouts/default";
 import type { NextPage } from 'next';
+import { useCounter } from '@/hooks/count';
 
 export const Home: NextPage = () => {
+  const {count, increment, decrement} = useCounter(0)
+
   return (
     <LayoutDefault>
-      <h1 className="text-5xl tracking-tight font-bold text-gray-900 my-10">
+      <h1 className="my-10 text-gray-900 text-5xl font-bold tracking-tight">
         <span className="block">Hello World!</span>
-        <span className="block text-blue-800 pl-10">Next.js TypeScript</span>
+        <span className="block pl-10 text-blue-800">Next.js TypeScript</span>
       </h1>
+
+      <p>count: {count}</p>
+      <div>
+        <button onClick={increment}>+1</button>
+        <button onClick={decrement}>-1</button>
+      </div>
 
       <div className="my-4">
         <p>
