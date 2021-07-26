@@ -1,6 +1,6 @@
 import { useState, useCallback, useEffect } from 'react';
 
-type UseCounterParameter = number | undefined;
+type UseCounterParameter = number;
 
 export const useCounter = (props: UseCounterParameter = 0) => {
   const [count, setCount] = useState(props);
@@ -21,16 +21,16 @@ export const useCounter = (props: UseCounterParameter = 0) => {
 };
 
 export const useCounterWithAlert = (props: UseCounterParameter) => {
-  const { count,  ...dispatches } = useCounter(props);
-  const [hoge, setString] = useState('ほげ');
+  const { count, ...dispatches } = useCounter(props);
+  const [text, setText] = useState('ほげ');
 
   useEffect(() => {
-    count === 10 ? setString('うんこ') : setString('ほげ')
+    count === 10 ? setText('うんこ') : setText('ほげ')
   }, [count]);
 
   return {
     count,
-    hoge,
+    text,
     ...dispatches,
   };
 };

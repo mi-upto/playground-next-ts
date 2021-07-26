@@ -11,7 +11,7 @@ export const Home: NextPage = () => {
   } = useCounter(10)
   const {
     count: count3,
-    hoge,
+    text,
     increment: increment3,
     decrement: decrement3,
   } = useCounterWithAlert(10);
@@ -24,7 +24,7 @@ export const Home: NextPage = () => {
         <span className="block pl-10 text-blue-800">Next.js TypeScript</span>
       </h1>
 
-      <h2>count3: {hoge}</h2>
+      <h2>count3: {text}</h2>
 
       <p>count: {count}</p>
       <div>
