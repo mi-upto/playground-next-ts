@@ -1,6 +1,6 @@
 import { useState, useCallback, useEffect } from 'react';
 
-type UseCounterParameter = number;
+type UseCounterParameter = number | undefined;
 
 export const useCounter = (props: UseCounterParameter = 0) => {
   const [count, setCount] = useState(props);
