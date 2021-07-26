@@ -1,13 +1,48 @@
-import { LayoutDefault } from "@/components/layouts/default";
+import { LayoutDefault } from '@/components/layouts/default';
 import type { NextPage } from 'next';
+import { useCounter, useCounterWithAlert } from '@/hooks/count';
 
 export const Home: NextPage = () => {
+  const { count, increment, decrement } = useCounter(0);
+  const {
+    count: count2,
+    increment: increment2,
+    decrement: decrement2
+  } = useCounter(10)
+  const {
+    count: count3,
+    hoge,
+    increment: increment3,
+    decrement: decrement3,
+  } = useCounterWithAlert(10);
+
+
   return (
     <LayoutDefault>
-      <h1 className="text-5xl tracking-tight font-bold text-gray-900 my-10">
+      <h1 className="my-10 text-gray-900 text-5xl font-bold tracking-tight">
         <span className="block">Hello World!</span>
-        <span className="block text-blue-800 pl-10">Next.js TypeScript</span>
+        <span className="block pl-10 text-blue-800">Next.js TypeScript</span>
       </h1>
+
+      <h2>count3: {hoge}</h2>
+
+      <p>count: {count}</p>
+      <div>
+        <button onClick={increment}>+1</button>
+        <button onClick={decrement}>-1</button>
+      </div>
+
+      <p>count2: {count2}</p>
+      <div>
+        <button onClick={increment2}>+1</button>
+        <button onClick={decrement2}>-1</button>
+      </div>
+
+      <p>count3: {count3}</p>
+      <div>
+        <button onClick={increment3}>+1</button>
+        <button onClick={decrement3}>-1</button>
+      </div>
 
       <div className="my-4">
         <p>
@@ -22,6 +57,6 @@ export const Home: NextPage = () => {
       </div>
     </LayoutDefault>
   );
-}
+};
 
 export default Home;
